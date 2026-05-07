@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>咖啡渣發酵實驗心智圖 - 視覺化版</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: #f4f1ea; /* 復古米色背景 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        h1 { color: #4a3728; margin-bottom: 30px; border-bottom: 2px solid #d2b48c; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>☕ 咖啡渣發酵實驗研究架構</h1>
+
+    <div class="container">
+        <div class="mermaid">
+        mindmap
+          root((<b>咖啡渣發酵實驗</b>))
+            (<b>發酵原理</b>)
+              ::icon(fa fa-wind)
+              好氧發酵
+                需要氧氣翻堆
+                熱能釋放
+              水分控制
+                55至60%
+                手握測試
+            (<b>實驗分組</b>)
+              ::icon(fa fa-flask)
+              A組:對照組
+                純咖啡渣
+              B系列:香蕉皮
+                B組:加香蕉皮
+                B+組:加香蕉皮與EM菌
+              C系列:豆粕
+                C組:加豆粕
+                C+組:加豆粕與EM菌
+            (<b>測試方法</b>)
+              ::icon(fa fa-eye)
+              物理指標
+                溫度監測
+                重量變化
+                外觀與氣味
+              化學指標
+                pH值變化
+              生物指標
+                綠豆發芽率測試
+            (<b>控制變因</b>)
+              ::icon(fa fa-cog)
+              固定總重量
+              相同環境溫度
+              定時翻堆通氣
+        </div>
+    </div>
+
+    <script>
+        // 初始化 Mermaid 並自定義扁平化風格
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#8b5a2b',       // 木質棕
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#4a3728',
+                lineColor: '#d2b48c',          // 連結線顏色
+                secondaryColor: '#6d8c54',     // 森林綠 (用於分支)
+                tertiaryColor: '#f4f1ea'       // 節點背景
+            }
+        });
+    </script>
+</body>
+</html>
