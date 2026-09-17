@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>導電度測試折線圖</title>
+  <!-- 引入 Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8fafc;
+      padding: 24px;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .card {
+      background: #ffffff;
+      padding: 28px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      width: 100%;
+      max-width: 850px;
+    }
+    h2 {
+      margin-top: 0;
+      color: #1e293b;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .chart-container {
+      position: relative;
+      width: 100%;
+      height: 420px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h2>導電度測試圖 (WK0 - WK4)</h2>
+    <div class="chart-container">
+      <canvas id="germinationChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    const ctx = document.getElementById('germinationChart').getContext('2d');
+
+    const chartData = {
+      labels: ['WK0', 'WK1', 'WK2', 'WK3', 'WK4'],
+      datasets: [
+        { label: 'C', data: [36, 31, 24, 25, 12], borderColor: '#ef4444', backgroundColor: '#ef4444', tension: 0.2, spanGaps: false },
+        { label: 'CE', data: [70, 35, 32, 27, 23], borderColor: '#f97316', backgroundColor: '#f97316', tension: 0.2, spanGaps: false },
+        { label: 'CB', data: [70, 49, 38, 27, 23], borderColor: '#eab308', backgroundColor: '#eab308', tension: 0.2, spanGaps: false },
+        { label: 'CBE', data: [70, 40, 36, 41, 23], borderColor: '#10b981', backgroundColor: '#10b981', tension: 0.2, spanGaps: false },
+        { label: 'CS', data: [73, 55, 34, 20, 15], borderColor: '#06b6d4', backgroundColor: '#06b6d4', tension: 0.2, spanGaps: false },
+        { label: 'CSE', data: [69, 50, 38, 29, 15], borderColor: '#8b5cf6', backgroundColor: '#8b5cf6', tension: 0.2, spanGaps: false }
+      ]
+    };
+
+    new Chart(ctx, {
+      type: 'line',
+      data: chartData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+            labels: { font: { size: 14 } }
+          },
+          tooltip: {
+            mode: 'index',
+            intersect: false
+          }
+        },
+        scales: {
+          x: {
+            title: { display: true, text: '週數 (Weeks)', font: { size: 14, weight: 'bold' } }
+          },
+          y: {
+            title: { display: true, text: '導電度(TDS-ppm)', font: { size: 14, weight: 'bold' } },
+            beginAtZero: true,
+            min: 0,
+            max: 80
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
